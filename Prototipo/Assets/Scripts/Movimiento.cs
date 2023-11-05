@@ -4,8 +4,9 @@ public class Movimiento : MonoBehaviour
 {
     public CharacterController characterController;
 
+    private Vector3 startPosition;
     public float speed = 10.0f;
-    public float turnSmoothTime = 0.1f;
+    public float turnSmoothTime = 0.5f;
     private float turnSmoothVelocity;
 
     public float jumpSpeed = 8.0f;
@@ -14,62 +15,83 @@ public class Movimiento : MonoBehaviour
     private Vector3 velocity;
     private bool isGrounded;
 
+    // Coyote Time variables
+    public float coyoteTimeDuration = 0.2f;
+    private float coyoteTimeCounter;
+
     [Header("Movimiento")]
     public Transform cam;
 
     [Header("Animaciones")]
     public Animator animator;
 
-    // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        startPosition = transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
+ 
+        bool wasGrounded = isGrounded;
         isGrounded = characterController.isGrounded;
+
+        // Start or reset the Coyote Time counter when grounded
+        if (isGrounded)
+        {
+            coyoteTimeCounter = coyoteTimeDuration;
+        }
+        else if (wasGrounded && !isGrounded)
+        {
+            // Player just left the ground, start Coyote Time
+            coyoteTimeCounter = coyoteTimeDuration;
+        }
+        else
+        {
+            // Player is in the air, reduce Coyote Time
+            coyoteTimeCounter -= Time.deltaTime;
+        }
+
         if (isGrounded && velocity.y < 0)
         {
-            velocity.y = -2f; // Se establece un pequeño valor negativo para asegurar que el personaje está firmemente sobre el suelo.
+            velocity.y = -2f;
             animator.SetBool("IsJumping", false);
         }
 
         float H_axis = Input.GetAxis("Horizontal");
         float V_axis = Input.GetAxis("Vertical");
         Vector3 direction = new Vector3(H_axis, 0, V_axis).normalized;
+        // Esta función se llamará automáticamente cuando el jugador entre en un trigger.
+      
+       
 
-        // Comprobar si el personaje debe saltar
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        // Allow jump if Coyote Time is active
+        if (Input.GetButtonDown("Jump") && coyoteTimeCounter > 0)
         {
-            animator.SetBool("IsJumping", true); // Se activa la animación de salto
+            animator.SetBool("IsJumping", true);
             velocity.y = Mathf.Sqrt(jumpSpeed * -2 * gravity);
+            coyoteTimeCounter = 0; // Reset Coyote Time after jumping
         }
 
-        // Aplicar la gravedad constantemente
         if (!isGrounded)
         {
             velocity.y += gravity * Time.deltaTime;
         }
 
-        // Mover el jugador
-        if (direction.magnitude >= 0.1f)
+        if (direction.magnitude >= 0.1f && V_axis > 0)
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
-            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            characterController.Move(moveDir * speed * Time.deltaTime);
-            animator.SetBool("Running", true);
-        }
-        else
-        {
-            animator.SetBool("Running", false);
         }
 
-        // Se mueve el personaje independientemente de si está saltando o no
+        Vector3 moveDir = Quaternion.Euler(0f, cam.eulerAngles.y, 0f) * direction;
+        characterController.Move(moveDir * speed * Time.deltaTime);
+
+        animator.SetBool("Running", direction.magnitude >= 0.1f);
+
         characterController.Move(velocity * Time.deltaTime);
     }
+  
 }
