@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 1.2455747, g: 0.65605146, b: 0.607362, a: 1}
+  m_IndirectSpecularColor: {r: 1.2470345, g: 0.6563023, b: 0.6073954, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 9a6bd570d40089a4cb05d2b1d27df18c, type: 2}
 --- !u!1001 &12576165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -494,7 +494,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 70f00dc157a05eb4b93f4755445f1ce1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 55.4
+      value: 57.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 70f00dc157a05eb4b93f4755445f1ce1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -538,15 +538,85 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 70f00dc157a05eb4b93f4755445f1ce1, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 175398262}
+      addedObject: {fileID: 175398263}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 70f00dc157a05eb4b93f4755445f1ce1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 175398265}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 70f00dc157a05eb4b93f4755445f1ce1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 175398264}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 70f00dc157a05eb4b93f4755445f1ce1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 175398267}
   m_SourcePrefab: {fileID: 100100000, guid: 70f00dc157a05eb4b93f4755445f1ce1, type: 3}
 --- !u!1 &175398261 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 70f00dc157a05eb4b93f4755445f1ce1, type: 3}
   m_PrefabInstance: {fileID: 175398260}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &175398262
-BoxCollider:
+--- !u!95 &175398263
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175398261}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ebe46cbf2ed519c4ba2d6ee86b35759a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &175398264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175398261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02b26ed0534e2b845b93a94e50917307, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jugador: {fileID: 400201861}
+  rangoPersecucion: 10
+  queEsSuelo:
+    serializedVersion: 2
+    m_Bits: 16
+  distanciaDeSeguridad: 1
+--- !u!195 &175398265
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175398261}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0.91
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!136 &175398267
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -563,9 +633,11 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1.9646767
+  m_Direction: 1
+  m_Center: {x: -0.05999999, y: 0.072338104, z: 0.10000001}
 --- !u!1 &240960349
 GameObject:
   m_ObjectHideFlags: 0
@@ -1819,8 +1891,8 @@ Transform:
   m_GameObject: {fileID: 760114687}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 365, y: 15.6, z: 134.3}
-  m_LocalScale: {x: 60, y: 60, z: 50}
+  m_LocalPosition: {x: 365, y: 15.6, z: 125.1}
+  m_LocalScale: {x: 80, y: 60, z: 80}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2916,13 +2988,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1135666596}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.024919668, y: 0.17920193, z: 0.023119088, w: 0.983225}
-  m_LocalPosition: {x: 264.1, y: 33.5, z: 327.7}
+  m_LocalRotation: {x: -0.014636539, y: 0.15353422, z: -0.011069048, w: 0.9879729}
+  m_LocalPosition: {x: 265.7, y: 39.3, z: 327.4}
   m_LocalScale: {x: 40, y: 8, z: 40}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -3.284, y: 20.598, z: 2.097}
+  m_LocalEulerAnglesHint: {x: -1.462, y: 17.686, z: -1.511}
 --- !u!114 &1135666601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2948,7 +3020,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 999
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -2963,7 +3035,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 36
   m_CollisionDetection: 0
 --- !u!1 &1143780335 stripped
 GameObject:
@@ -4915,7 +4987,7 @@ MonoBehaviour:
   m_YAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 2
+    m_MaxSpeed: 0
     m_AccelTime: 0
     m_DecelTime: 0.1
     m_InputAxisName: Mouse Y
@@ -4939,7 +5011,7 @@ MonoBehaviour:
   m_XAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 2
+    m_MaxSpeed: 0
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X
