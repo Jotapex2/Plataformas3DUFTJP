@@ -2,17 +2,27 @@ using UnityEngine;
 
 public class Moneda : MonoBehaviour
 {
-    private AudioSource audioSource;
     public AudioClip soundClip; // Arrastra tu clip de audio aquí a través del Inspector
+
+    private AudioSource audioSource;
 
     void Start()
     {
-        // Obtiene el componente AudioSource anexado al mismo objeto que este script.
+        // Verifica si este GameObject tiene un AudioSource antes de intentar acceder a él.
         audioSource = GetComponent<AudioSource>();
-        // Asigna el clip de audio al AudioSource si no ha sido asignado previamente.
-        if (audioSource.clip == null && soundClip != null)
+        if (audioSource == null)
         {
-            audioSource.clip = soundClip;
+            // Si no hay ningún AudioSource, imprime un mensaje de advertencia y agrega uno.
+            Debug.LogWarning("No se encontró AudioSource. Se agregará uno automáticamente.", this);
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        // Configura el AudioSource
+        audioSource.playOnAwake = false;
+        audioSource.clip = soundClip;
+        if (soundClip == null)
+        {
+            Debug.LogError("No se ha asignado clip de audio a soundClip en el Inspector.", this);
         }
     }
 
@@ -20,27 +30,22 @@ public class Moneda : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // Reproduce el sonido de la moneda si el clip de audio ha sido asignado.
+            // Asegúrate de que el clip de audio no sea nulo antes de intentar reproducirlo.
             if (audioSource.clip != null)
             {
                 audioSource.Play();
+                // Aumenta el puntaje.
+                GameManager.Instance.AgregarPuntos(10);
+                // Desactiva el objeto moneda para que no pueda ser recolectado de nuevo mientras el sonido está reproduciéndose.
+                GetComponent<Collider>().enabled = false;
+                GetComponent<Renderer>().enabled = false;
+                // Opcional: destruir el objeto moneda después de que el sonido se haya reproducido completamente.
+                Destroy(gameObject, audioSource.clip.length);
             }
             else
             {
-                Debug.LogError("Intento de reproducir un clip de audio nulo en Moneda.");
+                Debug.LogError("Intento de reproducir un clip de audio nulo en Moneda.", this);
             }
-
-            // Aumenta el puntaje.
-            GameManager.Instance.AgregarPuntos(10);
-
-            // Desactiva el objeto moneda para que no pueda ser recolectado de nuevo mientras el sonido está reproduciéndose.
-            // Esto también asegura que la moneda desaparezca si el sonido es más corto que el tiempo de desactivación.
-            GetComponent<Collider>().enabled = false;
-            GetComponent<Renderer>().enabled = false;
-
-            // Opcional: destruir el objeto moneda después de que el sonido se haya reproducido completamente.
-            // Esto previene que el AudioSource se destruya antes de que el sonido termine.
-            Destroy(gameObject, audioSource.clip != null ? audioSource.clip.length : 0f);
         }
     }
 }
