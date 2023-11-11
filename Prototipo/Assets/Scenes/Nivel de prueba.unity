@@ -1222,7 +1222,7 @@ MonoBehaviour:
   estrella: 0
   lastRespawnPoint: {fileID: 1265093482}
   characterRenderer: {fileID: 78038179}
-  invulnerabilityDuration: 15
+  invulnerabilityDuration: 1
   onHealthChanged:
     m_PersistentCalls:
       m_Calls:
