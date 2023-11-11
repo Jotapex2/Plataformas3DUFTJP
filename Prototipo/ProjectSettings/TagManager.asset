@@ -5,12 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Terrain
-  - Jugador
+  - MovingPlatform
+  - "Da\xF1o"
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - 
   - Water
   - UI
   - 

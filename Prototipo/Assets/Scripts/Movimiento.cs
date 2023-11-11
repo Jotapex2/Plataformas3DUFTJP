@@ -37,19 +37,17 @@ public class Movimiento : MonoBehaviour
         bool wasGrounded = isGrounded;
         isGrounded = characterController.isGrounded;
 
-        // Start or reset the Coyote Time counter when grounded
         if (isGrounded)
         {
             coyoteTimeCounter = coyoteTimeDuration;
         }
         else if (wasGrounded && !isGrounded)
         {
-            // Player just left the ground, start Coyote Time
+           
             coyoteTimeCounter = coyoteTimeDuration;
         }
         else
         {
-            // Player is in the air, reduce Coyote Time
             coyoteTimeCounter -= Time.deltaTime;
         }
 
@@ -62,16 +60,12 @@ public class Movimiento : MonoBehaviour
         float H_axis = Input.GetAxis("Horizontal");
         float V_axis = Input.GetAxis("Vertical");
         Vector3 direction = new Vector3(H_axis, 0, V_axis).normalized;
-        // Esta función se llamará automáticamente cuando el jugador entre en un trigger.
-      
-       
-
-        // Allow jump if Coyote Time is active
+  
         if (Input.GetButtonDown("Jump") && coyoteTimeCounter > 0)
         {
             animator.SetBool("IsJumping", true);
             velocity.y = Mathf.Sqrt(jumpSpeed * -2 * gravity);
-            coyoteTimeCounter = 0; // Reset Coyote Time after jumping
+            coyoteTimeCounter = 0; 
         }
 
         if (!isGrounded)
