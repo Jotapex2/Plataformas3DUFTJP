@@ -1,5 +1,5 @@
 using UnityEngine;
-using TMPro; // TextMeshPro
+using TMPro; // Asegúrate de incluir este namespace si usas TextMeshPro
 
 public class GameManager : MonoBehaviour
 {
