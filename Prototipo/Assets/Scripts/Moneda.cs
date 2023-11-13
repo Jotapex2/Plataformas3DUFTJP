@@ -34,11 +34,26 @@ public class Moneda : MonoBehaviour
             if (audioSource.clip != null)
             {
                 audioSource.Play();
+
+                // Obtiene el componente CharacterStatus del jugador y aumenta la moneda.
+                CharacterStatus characterStatus = other.GetComponent<CharacterStatus>();
+                if (characterStatus != null)
+                {
+                    characterStatus.moneda++;
+                    GameManager.Instance.AgregarMoneda(1);
+                }
+                else
+                {
+                    Debug.LogError("No se encontró el componente CharacterStatus en el jugador.", this);
+                }
+
                 // Aumenta el puntaje.
                 GameManager.Instance.AgregarPuntos(10);
+
                 // Desactiva el objeto moneda para que no pueda ser recolectado de nuevo mientras el sonido está reproduciéndose.
                 GetComponent<Collider>().enabled = false;
                 GetComponent<Renderer>().enabled = false;
+
                 // Opcional: destruir el objeto moneda después de que el sonido se haya reproducido completamente.
                 Destroy(gameObject, audioSource.clip.length);
             }

@@ -5,6 +5,7 @@ public class Movimiento : MonoBehaviour
     public CharacterController characterController;
 
     public float speed = 10.0f;
+    public float sprintSpeedMultiplier = 2.0f; // Multiplicador de velocidad al correr
     public float turnSmoothTime = 0.5f;
     private float turnSmoothVelocity;
 
@@ -35,27 +36,17 @@ public class Movimiento : MonoBehaviour
 
     void Update()
     {
-        bool wasGrounded = isGrounded;
         isGrounded = characterController.isGrounded;
-
         if (isGrounded)
         {
             coyoteTimeCounter = coyoteTimeDuration;
             jumpCount = 0; // Restablece el contador de saltos cuando el jugador toca el suelo
-        }
-        else if (wasGrounded && !isGrounded)
-        {
-            coyoteTimeCounter = coyoteTimeDuration;
+            velocity.y = -2f; // Pequeña fuerza hacia abajo para asegurar que el controlador está en el suelo
+            animator.SetBool("IsJumping", false);
         }
         else
         {
             coyoteTimeCounter -= Time.deltaTime;
-        }
-
-        if (isGrounded && velocity.y < 0)
-        {
-            velocity.y = -2f;
-            animator.SetBool("IsJumping", false);
         }
 
         float H_axis = Input.GetAxis("Horizontal");
@@ -64,31 +55,32 @@ public class Movimiento : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && (isGrounded || coyoteTimeCounter > 0 || jumpCount < maxJumpCount))
         {
-            animator.SetBool("IsJumping", true);
             velocity.y = Mathf.Sqrt(jumpSpeed * -2f * gravity);
             jumpCount++; // Incrementa el contador de saltos
             coyoteTimeCounter = 0; // Restablece el coyote time
+            animator.SetBool("IsJumping", true);
         }
 
-        if (!isGrounded)
-        {
-            velocity.y += gravity * Time.deltaTime;
-        }
+        velocity.y += gravity * Time.deltaTime;
 
-        float currentSpeed = speed;
+        // Verifica si el jugador está corriendo y actualiza la velocidad y la animación correspondientemente
+        bool isRunning = Input.GetKey(KeyCode.LeftShift);
+        float currentSpeed = isRunning ? speed * sprintSpeedMultiplier : speed;
+        animator.SetBool("Running", direction.magnitude >= 0.1f && isGrounded);
+        animator.SetBool("IsDoubleRunning", isRunning);
+
         if (direction.magnitude >= 0.1f)
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
+            // Suaviza la rotación solo si te estás moviendo hacia adelante o si la entrada vertical (V_axis) no es negativa
+            if (V_axis >= 0)
+            {
+                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+                transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            }
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             characterController.Move(moveDir.normalized * currentSpeed * Time.deltaTime);
         }
-
         characterController.Move(velocity * Time.deltaTime);
-
-        // Actualiza las animaciones
-        animator.SetBool("Running", direction.magnitude >= 0.1f);
     }
 }
