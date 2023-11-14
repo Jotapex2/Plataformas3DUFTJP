@@ -25,4 +25,7 @@ Cambios entrega 18 de noviembre
 -Agregada las mecánicas de: Sprint, Doble salto y movimiento de plataforma, con dos códigos distintos.
 
 
+-Pequeñas mejoras en las animaciones Idle y de correr.
+
+
 
