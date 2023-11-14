@@ -2,7 +2,7 @@
 Prototipo 3D plataformas para el Diplomado en Diseño y desarrollo de videojuegos 3d en UNITY
 Por Juan Pablo González Urriola
 
-Cambios entrega 18 de noviembre
+Cambios para la entrega del 18 de noviembre
 
 -Creado nivel de prueba
 
