@@ -48,7 +48,7 @@ public class Moneda : MonoBehaviour
                 }
 
                 // Aumenta el puntaje.
-                GameManager.Instance.AgregarPuntos(10);
+                //GameManager.Instance.AgregarPuntos(10);
 
                 // Desactiva el objeto moneda para que no pueda ser recolectado de nuevo mientras el sonido está reproduciéndose.
                 GetComponent<Collider>().enabled = false;

@@ -52,7 +52,7 @@ public class WinTrigger : MonoBehaviour
                     GetComponent<Renderer>().enabled = false;
 
                     // Aumenta el puntaje
-                    GameManager.Instance.AgregarPuntos(10);
+                    //GameManager.Instance.AgregarPuntos(10);
 
                     // Inicia la corrutina para cargar la escena de victoria después de que el sonido termine
                     StartCoroutine(LoadWinSceneAfterSound());

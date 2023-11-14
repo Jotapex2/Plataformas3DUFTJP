@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    /*
     public void AgregarPuntos(int puntos)
     {
         Score += puntos;
@@ -34,13 +34,13 @@ public class GameManager : MonoBehaviour
         if (scoreText != null)
             scoreText.text = "Score: " + Score.ToString();
     }
-
+    */
     public void AgregarMoneda(int cantidad)
     {
         Monedas += cantidad;
         // Actualiza la interfaz de usuario con la nueva cantidad de monedas
         if (monedaText != null)
-            monedaText.text = "Monedas: " + Monedas.ToString();
+            monedaText.text =  Monedas.ToString();
     }
 
     public void AgregarEstrella(int cantidad)
@@ -48,6 +48,6 @@ public class GameManager : MonoBehaviour
         Estrellas += cantidad;
         // Actualiza la interfaz de usuario con la nueva cantidad de estrellas
         if (estrellaText != null)
-            estrellaText.text = "Estrellas: " + Estrellas.ToString();
+            estrellaText.text = Estrellas.ToString();
     }
 }
