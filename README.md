@@ -22,6 +22,9 @@ Cambios para la entrega del 18 de noviembre
 -Agregado coleccionable estrella (Te hace ganar el nivel)
 
 
+-Agregado coleccionable vida extra: Te hace ganar una vida extra si es que no tienes el número máximo de vidas (5)
+
+
 -Agregada las mecánicas de: Sprint, Doble salto y movimiento de plataforma, con dos códigos distintos.
 
 
