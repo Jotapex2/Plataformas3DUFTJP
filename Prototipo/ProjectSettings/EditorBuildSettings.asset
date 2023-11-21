@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WinScene.unity
     guid: ee975d66f7ff66145812dba4014c0b32
+  - enabled: 1
+    path: "Assets/Scenes/Men\xFAInicio.unity"
+    guid: 0aca6dde60eac0c4caf4d573949524e1
+  - enabled: 1
+    path: Assets/Scenes/Nivel1.unity
+    guid: 0e96a31421ae94841ac9870bbbc8f726
   m_configObjects: {}
