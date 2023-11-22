@@ -4842,33 +4842,9 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 963194228}
-    - target: {fileID: 6586308987562984934, guid: 2c9516bb8254e23499d61f02c73aa8b8, type: 3}
-      propertyPath: speed
-      value: 11.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6586308987562984934, guid: 2c9516bb8254e23499d61f02c73aa8b8, type: 3}
-      propertyPath: gravity
-      value: -12
-      objectReference: {fileID: 0}
-    - target: {fileID: 6586308987562984934, guid: 2c9516bb8254e23499d61f02c73aa8b8, type: 3}
-      propertyPath: turnSmoothTime
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 8635889298373381360, guid: 2c9516bb8254e23499d61f02c73aa8b8, type: 3}
       propertyPath: m_Name
       value: Waqaj
-      objectReference: {fileID: 0}
-    - target: {fileID: 8976526330385716810, guid: 2c9516bb8254e23499d61f02c73aa8b8, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8976526330385716810, guid: 2c9516bb8254e23499d61f02c73aa8b8, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8976526330385716810, guid: 2c9516bb8254e23499d61f02c73aa8b8, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 8976526330385716810, guid: 2c9516bb8254e23499d61f02c73aa8b8, type: 3}
       propertyPath: m_LocalPosition.x
