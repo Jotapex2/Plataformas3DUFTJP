@@ -2,6 +2,32 @@
 Prototipo 3D plataformas para el Diplomado en Diseño y desarrollo de videojuegos 3d en UNITY
 Por Juan Pablo González Urriola
 
+Cambios para la entrega del 25 de noviembre
+
+
+Creación del primer nivel, con objeto Rigibody y raycasting (lasers).
+
+
+Creación de menú simple para iniciar el juego.
+
+
+Creación del lore del prototipo (al menos), con video intro.
+
+
+Inicio de la producción de los niveles 2 y 3, aunque falta desarrollarlos.
+
+
+Configurado mapa de luces para la escena de intro y los primeros tres niveles.
+
+
+Agregadas nuevas texturas y modelos complementarios al juego.
+
+
+Falta:
+Enemigos, Creación de un sistema de cambio de nivel, creación de menú de pausa, creación de sistema de savegame, creación de los niveles 2 y 3 (aunque están bosquejados), mejoras en el gamefeel, música y sonidos de efecto adecuados, pantalla de gameover, pantalla de créditos, posible mejora en el sistema de animaciones del personaje principal. 
+
+
+
 Cambios para la entrega del 18 de noviembre
 
 -Creado nivel de prueba
