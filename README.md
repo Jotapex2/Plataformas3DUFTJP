@@ -2,7 +2,7 @@
 **Prototipo 3D plataformas para el Diplomado en Diseño y desarrollo de videojuegos 3d en UNITY de la Universidad Finis Terrae**
 Por Juan Pablo González Urriola
 
-#Cambios para la entrega del 25 de noviembre
+# Cambios para la entrega del 25 de noviembre
 
 
 -Creación del primer nivel, con objeto Rigibody y raycasting (lasers).
@@ -23,12 +23,15 @@ Por Juan Pablo González Urriola
 -Agregadas nuevas texturas y modelos complementarios al juego.
 
 
-#Falta:
+-Se agregaron fuentes nuevas para la UI del juego.
+
+
+# Falta:
 -Enemigos, Creación de un sistema de cambio de nivel, creación de menú de pausa, creación de sistema de savegame, creación de los niveles 2 y 3 (aunque están bosquejados), mejoras en el gamefeel, música y sonidos de efecto adecuados, pantalla de gameover, pantalla de créditos, posible mejora en el sistema de animaciones del personaje principal. 
 
 
 
-#Cambios para la entrega del 18 de noviembre
+# Cambios para la entrega del 18 de noviembre
 
 -Creado nivel de prueba
 
