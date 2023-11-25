@@ -14,6 +14,7 @@ public class Movimiento : MonoBehaviour
 
     private Vector3 velocity;
     private bool isGrounded;
+    private bool isJumping;
 
     // Variables para el doble salto
     public int maxJumpCount = 2; // Número máximo de saltos permitidos
@@ -31,6 +32,7 @@ public class Movimiento : MonoBehaviour
 
     void Start()
     {
+        characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -42,6 +44,7 @@ public class Movimiento : MonoBehaviour
             coyoteTimeCounter = coyoteTimeDuration;
             jumpCount = 0; // Restablece el contador de saltos cuando el jugador toca el suelo
             velocity.y = -2f; // Pequeña fuerza hacia abajo para asegurar que el controlador está en el suelo
+            isJumping = false;
             animator.SetBool("IsJumping", false);
         }
         else
@@ -58,10 +61,14 @@ public class Movimiento : MonoBehaviour
             velocity.y = Mathf.Sqrt(jumpSpeed * -2f * gravity);
             jumpCount++; // Incrementa el contador de saltos
             coyoteTimeCounter = 0; // Restablece el coyote time
+            isJumping = true;
             animator.SetBool("IsJumping", true);
         }
 
-        velocity.y += gravity * Time.deltaTime;
+        if (!isGrounded)
+        {
+            velocity.y += gravity * Time.deltaTime;
+        }
 
         // Verifica si el jugador está corriendo y actualiza la velocidad y la animación correspondientemente
         bool isRunning = Input.GetKey(KeyCode.LeftShift);
@@ -80,5 +87,10 @@ public class Movimiento : MonoBehaviour
         }
 
         characterController.Move(velocity * Time.deltaTime);
+    }
+
+    public bool IsFalling()
+    {
+        return isJumping && velocity.y < 0;
     }
 }
