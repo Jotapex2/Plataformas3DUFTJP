@@ -6,6 +6,30 @@
 **Prototipo 3D plataformas para el Diplomado en Diseño y desarrollo de videojuegos 3d en UNITY de la Universidad Finis Terrae**
 Por Juan Pablo González Urriola
 
+# Estructura de niveles y lore
+
+
+Waqaj: El aventurero climático, tiene que rescatar las tres estrellas de poder de cada uno de los planetas que están siendo destruídos por el cambio climático
+
+Nivel 1:
+Mouri, un planeta tranquilo que está siendo devorado por la lava.
+
+Mouri es una isla que está siendo destruido por la lava (por algo los agujeros en el terrain), es un nivel plataformero, con zonas para enemigos que faltan agregar, aunque, dado el diseño del nivel, no es necesario meter físicas muy complejas (aunque estoy revisando si se podrían insertar los joins como plataformas móviles). También ocupo unos lasers con raycast como obstáculo en la primera parte del nivel.
+
+También ocupo unos lasers con raycast como obstáculo en la primera parte del nivel y hay plataformas “trampa” pintadas de rojo, son las mismas plataformas normales, pero con el collider desactivado, así el player cae a la lava.
+
+Nivel 2:
+Destri, un bonito paraíso que se está inundando.
+
+Destri es un nivel de agua, con plataformas, acá irían los Joints como plataformas movibles tipo Donkey Kong, en el centro hay una isla que conduce a un pasaje subterráneo donde está la esfera de poder.
+
+Nivel 3:
+Quaj, otro planeta devastado tras una guerra nuclear.
+Aún no está diseñado, pero planeo hacer una planta nuclear destruida, con el suelo radiactivo y trampas parecidas a ello.
+
+
+El juego contará con tres niveles
+
 # Cambios para la entrega del 25 de noviembre
 
 
