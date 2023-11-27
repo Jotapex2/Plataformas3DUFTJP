@@ -223,6 +223,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4466199826547540793, guid: f4bc8a02eddd89040a5ccd72c933b2b6, type: 3}
+      propertyPath: m_Name
+      value: EstrellaText
+      objectReference: {fileID: 0}
+    - target: {fileID: 6487970334696537378, guid: f4bc8a02eddd89040a5ccd72c933b2b6, type: 3}
+      propertyPath: m_Name
+      value: MonedaText
+      objectReference: {fileID: 0}
     - target: {fileID: 7435616006281307918, guid: f4bc8a02eddd89040a5ccd72c933b2b6, type: 3}
       propertyPath: m_margin.x
       value: 56.76026

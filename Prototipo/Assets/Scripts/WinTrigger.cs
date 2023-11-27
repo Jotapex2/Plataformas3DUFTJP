@@ -7,6 +7,8 @@ public class WinTrigger : MonoBehaviour
     public AudioClip soundClip; // Arrastra tu clip de audio aquí a través del Inspector
     private AudioSource audioSource;
     private bool isCollected = false; // Bandera para prevenir recolecciones múltiples
+    public string winSceneName = "WinScene"; // Nombre de la escena de victoria, asignable en el Inspector
+
 
     void Start()
     {
@@ -75,6 +77,6 @@ public class WinTrigger : MonoBehaviour
         yield return new WaitForSeconds(audioSource.clip.length);
 
         // Carga la escena de victoria
-        SceneManager.LoadScene("WinScene");
+        SceneManager.LoadScene(winSceneName);
     }
 }

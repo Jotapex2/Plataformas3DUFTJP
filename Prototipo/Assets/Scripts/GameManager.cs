@@ -1,5 +1,6 @@
 using UnityEngine;
-using TMPro; // Asegúrate de incluir este namespace si usas TextMeshPro
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,45 +10,67 @@ public class GameManager : MonoBehaviour
     public int Monedas { get; private set; }
     public int Estrellas { get; private set; }
 
-    public TextMeshProUGUI scoreText; // Referencia al componente de texto de la UI para el puntaje
-    public TextMeshProUGUI monedaText; // Referencia al componente de texto de la UI para las monedas
-    public TextMeshProUGUI estrellaText; // Referencia al componente de texto de la UI para las estrellas
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI monedaText;
+    public TextMeshProUGUI estrellaText;
 
+    void Start()
+    {
+        UpdateUIReferences();
+        UpdateUI();
+    }
     void Awake()
     {
-        // Configurar el singleton
         if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
-        else
+        else if (Instance != this)
         {
             Destroy(gameObject);
         }
     }
-    /*
-    public void AgregarPuntos(int puntos)
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Score += puntos;
-        // Actualiza la interfaz de usuario con el nuevo puntaje
+        UpdateUIReferences();
+        UpdateUI();
+    }
+
+    void UpdateUIReferences()
+    {
+        // Aquí debes buscar y asignar las referencias de UI
+        // Asegúrate de que los nombres coincidan con los de tus objetos de UI en la escena
+        scoreText = GameObject.Find("ScoreText")?.GetComponent<TextMeshProUGUI>();
+        monedaText = GameObject.Find("MonedaText")?.GetComponent<TextMeshProUGUI>();
+        estrellaText = GameObject.Find("EstrellaText")?.GetComponent<TextMeshProUGUI>();
+    }
+
+    void UpdateUI()
+    {
         if (scoreText != null)
             scoreText.text = "Score: " + Score.ToString();
+        if (monedaText != null)
+            monedaText.text = Monedas.ToString();
+        if (estrellaText != null)
+            estrellaText.text = Estrellas.ToString();
     }
-    */
+
     public void AgregarMoneda(int cantidad)
     {
         Monedas += cantidad;
-        // Actualiza la interfaz de usuario con la nueva cantidad de monedas
         if (monedaText != null)
-            monedaText.text =  Monedas.ToString();
+            monedaText.text = Monedas.ToString();
     }
 
     public void AgregarEstrella(int cantidad)
     {
         Estrellas += cantidad;
-        // Actualiza la interfaz de usuario con la nueva cantidad de estrellas
         if (estrellaText != null)
             estrellaText.text = Estrellas.ToString();
     }
+
+    // Aquí puedes agregar otros métodos, como AgregarPuntos, etc.
 }
