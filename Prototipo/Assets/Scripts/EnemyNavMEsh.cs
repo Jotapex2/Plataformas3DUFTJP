@@ -19,5 +19,11 @@ public class EnemyNavMEsh : MonoBehaviour
     void Update()
     {
         agent.SetDestination(player.position);
+        // Hacer que el enemigo mire hacia la cámara manteniendo su orientación hacia adelante
+        Transform cameraTransform = Camera.main.transform;
+        Vector3 directionToCamera = cameraTransform.position - transform.position;
+        directionToCamera.y = 0; // Ignora la diferencia de altura
+        Quaternion lookRotation = Quaternion.LookRotation(directionToCamera);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f); // Ajusta el 5f para controlar la velocidad de rotación
     }
 }

@@ -1,15 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemigo1_Script : MonoBehaviour
 {
     public Animator animator;
+    public AudioSource audioSource; // Componente AudioSource
+
+    public AudioClip deathSound; // Sonido de muerte
+    public AudioClip hitSound; // Sonido cuando el enemigo golpea al jugador
 
     private void Start()
     {
         if (animator == null)
             animator = GetComponent<Animator>();
+
+        if (audioSource == null)
+            audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,10 +29,10 @@ public class Enemigo1_Script : MonoBehaviour
             else
             {
                 var damageable = other.GetComponent<IDamageable>();
-
                 if (damageable != null)
                 {
                     damageable.AddDamage(1);
+                    PlayHitSound();
                 }
             }
         }
@@ -36,6 +41,23 @@ public class Enemigo1_Script : MonoBehaviour
     void Die()
     {
         animator.SetTrigger("Die");
+        PlayDeathSound();
         Destroy(gameObject, 2f); // Ajusta según la duración de la animación de muerte
+    }
+
+    void PlayDeathSound()
+    {
+        if (deathSound != null)
+        {
+            audioSource.PlayOneShot(deathSound);
+        }
+    }
+
+    void PlayHitSound()
+    {
+        if (hitSound != null)
+        {
+            audioSource.PlayOneShot(hitSound);
+        }
     }
 }
