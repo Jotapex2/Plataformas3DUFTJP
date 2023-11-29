@@ -1,7 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemigo1_Script : MonoBehaviour
+public class Enemigo2Die : MonoBehaviour
 {
+
     public Animator animator;
     public AudioSource audioSource;
 
@@ -72,4 +75,3 @@ public class Enemigo1_Script : MonoBehaviour
         }
     }
 }
-
