@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colider: {fileID: 5875646877617276198}
-  radius: 29.7
+  radius: 60
   speed: 5
   pivot: {fileID: 1169307369608498264}
   shootSpeed: 15
