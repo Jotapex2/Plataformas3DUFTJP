@@ -141,7 +141,7 @@ MonoBehaviour:
   radius: 60
   speed: 5
   pivot: {fileID: 1169307369608498264}
-  shootSpeed: 15
+  shootSpeed: 5
   bulletPref: {fileID: 7104256112447838940, guid: c778aa507c7d0c643a0477db83278d00, type: 3}
 --- !u!135 &5875646877617276198
 SphereCollider:
