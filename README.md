@@ -19,9 +19,9 @@ Mouri es una isla que está siendo destruido por la lava (por algo los agujeros 
 También ocupo unos lasers con raycast como obstáculo en la primera parte del nivel y hay plataformas “trampa” pintadas de rojo, son las mismas plataformas normales, pero con el collider desactivado, así el player cae a la lava.
 
 Nivel 2:
-Destri, un bonito paraíso que se está inundando.
+Destri es un nivel de agua, Este se compone de una serie de plataformas estáticas y las de cuerda (joint), donde el jugador tiene que ir avanzando, esquivando y/o matando a los enemigos, hasta llegar al centro de la isla del medio. Ahí el jugador caerá a una zona subterránea donde está la estrella de poder.
 
-Destri es un nivel de agua, con plataformas, acá irían los Joints como plataformas movibles tipo Donkey Kong, en el centro hay una isla que conduce a un pasaje subterráneo donde está la esfera de poder.
+Este nivel tiene Rigidbody (Enemigo 1 y tres), máquinas de estado del enemigo 2 (torreta) y del enemigo 3 (fusión enemigos 1 + 2) Además de tener físicas de Joints con las cuerdas, también hay un par de Raycast lasers por ahí.
 
 Nivel 3:
 Quaj, otro planeta devastado tras una guerra nuclear.
@@ -29,6 +29,28 @@ Aún no está diseñado, pero planeo hacer una planta nuclear destruida, con el 
 
 
 El juego contará con tres niveles
+
+# Cambios para la entrega del 2 de diciembre
+
+Enemigos:
+
+Enemigo 1 (Nav Mesh)
+
+
+Este es un pequeño cubo que ocupa el Nav Mesh para moverse y acosar al jugador hasta matarlo, el jugador puede matarlo saltando encima de él, como un goobma del super mario. Al hacerlo, el enemigo suelta una moneda como recompensa.
+
+Enemigo 2 (FSM)
+
+Esta es una torreta triángulo que hasta el momento es inmortal, esta la compone tres estados: El estado entry que es cuando spamea en el nivel, el estado Vigilante y el estado ataque del estado entry al vigilante, la torreta pasa inmediatamente al spamear, 
+el estado vigilante es cuando la torreta está en modo de espera a que el jugador se le acerque a su zona de ataque. Cuando el jugador se acerca a la zona de ataque, la torreta le dispara balas para quitarle vida, cuando el jugador sale de dicha zona, la torreta vuelve a su estado de vigilante.
+
+
+Actualmente hay un cuarto estado “DIE”, ya que el plan es que la torreta también muera aplastada por el salto del jugador, pero esto quedó como una propiedad para el futuro. 
+
+Enemigo 3 (FSM Y NavMesh)
+
+El enemigo 3 es una fusión del enemigo 1 y 2, hay uno escondido en el primer nivel como testing, pero lo ideal es que sea solo del tercer nivel. 
+
 
 # Cambios para la entrega del 25 de noviembre
 
