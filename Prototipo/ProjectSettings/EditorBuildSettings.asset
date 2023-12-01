@@ -5,21 +5,21 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Niveldeprueba.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/WinScene.unity
     guid: ee975d66f7ff66145812dba4014c0b32
   - enabled: 1
     path: "Assets/Scenes/Men\xFAInicio.unity"
     guid: 0aca6dde60eac0c4caf4d573949524e1
   - enabled: 1
-    path: Assets/Scenes/Nivel2.unity
-    guid: 30fdf3c52d459194aa2caa16c03b0384
-  - enabled: 1
     path: Assets/Scenes/Nivel1.unity
     guid: 0e96a31421ae94841ac9870bbbc8f726
+  - enabled: 1
+    path: Assets/Scenes/Nivel2.unity
+    guid: 30fdf3c52d459194aa2caa16c03b0384
   - enabled: 1
     path: Assets/Scenes/Nivel3.unity
     guid: e4fc60c608f378e49934600b36a4a4a3
