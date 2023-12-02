@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class Enemigo2Die : MonoBehaviour
 {
-
     public Animator animator;
     public AudioSource audioSource;
-
     public AudioClip deathSound;
-    public AudioClip hitSound;
-
     public GameObject monedaPrefab; // Prefab de la moneda
+    public GameObject particleSystemPrefab; // Prefab del sistema de partículas
 
     private void Start()
     {
+        // Asegurarse de que el animator y el audioSource estén asignados
         if (animator == null)
             animator = GetComponent<Animator>();
 
@@ -24,6 +22,7 @@ public class Enemigo2Die : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // Detectar colisión con el jugador
         if (other.CompareTag("Player"))
         {
             Movimiento playerMovement = other.GetComponent<Movimiento>();
@@ -37,7 +36,6 @@ public class Enemigo2Die : MonoBehaviour
                 if (damageable != null)
                 {
                     damageable.AddDamage(1);
-                    PlayHitSound();
                 }
             }
         }
@@ -45,33 +43,38 @@ public class Enemigo2Die : MonoBehaviour
 
     void Die()
     {
+        // Activar animación de muerte, sonido, generar moneda y sistema de partículas
         animator.SetTrigger("Die");
         PlayDeathSound();
         SpawnMoneda();
-        Destroy(gameObject, 2f);
+        SpawnParticleSystem();
+        Destroy(gameObject, 2f); // Destruir el objeto después de 2 segundos
     }
 
     void PlayDeathSound()
     {
+        // Reproducir sonido de muerte
         if (deathSound != null)
         {
             audioSource.PlayOneShot(deathSound);
         }
     }
 
-    void PlayHitSound()
-    {
-        if (hitSound != null)
-        {
-            audioSource.PlayOneShot(hitSound);
-        }
-    }
-
     void SpawnMoneda()
     {
+        // Generar una moneda
         if (monedaPrefab != null)
         {
             Instantiate(monedaPrefab, transform.position, Quaternion.identity);
+        }
+    }
+
+    void SpawnParticleSystem()
+    {
+        // Generar el sistema de partículas
+        if (particleSystemPrefab != null)
+        {
+            Instantiate(particleSystemPrefab, transform.position, Quaternion.identity);
         }
     }
 }

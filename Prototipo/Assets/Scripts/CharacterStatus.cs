@@ -13,11 +13,19 @@ public class CharacterStatus : MonoBehaviour, IDamageable
     public Renderer characterRenderer; // Asignar en el Inspector
     public float invulnerabilityDuration = 15f;
     public UnityEvent onHealthChanged; // Asegúrate de configurar los suscriptores en el Inspector
+    public AudioClip hitSound;
 
+    private AudioSource audioSource; // Fuente de audio para reproducir sonidos
     private bool isInvulnerable = false;
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>(); // Obtener el componente AudioSource
+        if (audioSource == null)
+        {
+            Debug.LogWarning("AudioSource no encontrado en el objeto, se requiere para reproducir sonidos.");
+        }
+
         if (characterRenderer != null)
         {
             characterRenderer.enabled = true;
@@ -41,6 +49,7 @@ public class CharacterStatus : MonoBehaviour, IDamageable
         else
         {
             StartCoroutine(BecomeInvulnerable());
+            PlayHitSound();
         }
     }
 
@@ -109,6 +118,13 @@ public class CharacterStatus : MonoBehaviour, IDamageable
         }
     }
 
+    private void PlayHitSound()
+    {
+        if (hitSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(hitSound);
+        }
+    }
 }
 
 public interface IDamageable

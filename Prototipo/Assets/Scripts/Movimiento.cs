@@ -16,6 +16,9 @@ public class Movimiento : MonoBehaviour
     private bool isGrounded;
     private bool isJumping;
 
+    public AudioClip jumpSound;
+    private AudioSource audioSource;
+
     // Variables para el doble salto
     public int maxJumpCount = 2; // Número máximo de saltos permitidos
     private int jumpCount; // Contador actual de saltos
@@ -33,8 +36,16 @@ public class Movimiento : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        audioSource = GetComponent<AudioSource>(); // Obtener el componente AudioSource
+
+        if (audioSource == null)
+        {
+            Debug.LogWarning("AudioSource no encontrado en el objeto, se requiere para reproducir sonidos.");
+        }
+
         Cursor.lockState = CursorLockMode.Locked;
     }
+
 
     void Update()
     {
@@ -63,6 +74,7 @@ public class Movimiento : MonoBehaviour
             coyoteTimeCounter = 0; // Restablece el coyote time
             isJumping = true;
             animator.SetBool("IsJumping", true);
+            PlayJumpSound();
         }
 
         if (!isGrounded)
@@ -92,5 +104,12 @@ public class Movimiento : MonoBehaviour
     public bool IsFalling()
     {
         return isJumping && velocity.y < 0;
+    }
+    void PlayJumpSound()
+    {
+        if (jumpSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(jumpSound);
+        }
     }
 }

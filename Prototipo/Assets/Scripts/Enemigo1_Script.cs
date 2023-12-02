@@ -7,7 +7,7 @@ public class Enemigo1_Script : MonoBehaviour
 
     public AudioClip deathSound;
     public AudioClip hitSound;
-
+    public GameObject particleSystemPrefab; // Prefab del sistema de partículas
     public GameObject monedaPrefab; // Prefab de la moneda
 
     private void Start()
@@ -45,6 +45,7 @@ public class Enemigo1_Script : MonoBehaviour
         animator.SetTrigger("Die");
         PlayDeathSound();
         SpawnMoneda();
+        SpawnParticleSystem();
         Destroy(gameObject, 2f);
     }
 
@@ -69,6 +70,14 @@ public class Enemigo1_Script : MonoBehaviour
         if (monedaPrefab != null)
         {
             Instantiate(monedaPrefab, transform.position, Quaternion.identity);
+        }
+    }
+    void SpawnParticleSystem()
+    {
+        // Generar el sistema de partículas
+        if (particleSystemPrefab != null)
+        {
+            Instantiate(particleSystemPrefab, transform.position, Quaternion.identity);
         }
     }
 }
