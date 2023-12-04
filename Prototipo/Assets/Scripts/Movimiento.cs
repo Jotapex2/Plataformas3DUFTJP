@@ -33,6 +33,8 @@ public class Movimiento : MonoBehaviour
     [Header("Animaciones")]
     public Animator animator;
 
+    private Transform currentPlatform; // Para almacenar la plataforma actual
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -46,11 +48,10 @@ public class Movimiento : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-
     void Update()
     {
         isGrounded = characterController.isGrounded;
-        if (isGrounded)
+        if (isGrounded && currentPlatform == null)
         {
             coyoteTimeCounter = coyoteTimeDuration;
             jumpCount = 0; // Restablece el contador de saltos cuando el jugador toca el suelo
@@ -69,6 +70,12 @@ public class Movimiento : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && (isGrounded || coyoteTimeCounter > 0 || jumpCount < maxJumpCount))
         {
+            if (currentPlatform != null)
+            {
+                transform.parent = null; // Desvincula al jugador de la plataforma
+                currentPlatform = null;
+            }
+
             velocity.y = Mathf.Sqrt(jumpSpeed * -2f * gravity);
             jumpCount++; // Incrementa el contador de saltos
             coyoteTimeCounter = 0; // Restablece el coyote time
@@ -101,10 +108,23 @@ public class Movimiento : MonoBehaviour
         characterController.Move(velocity * Time.deltaTime);
     }
 
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.CompareTag("MovingPlatform") && isGrounded)
+        {
+            if (currentPlatform != hit.transform)
+            {
+                transform.parent = hit.transform; // Hace al jugador hijo de la plataforma
+                currentPlatform = hit.transform;
+            }
+        }
+    }
+
     public bool IsFalling()
     {
         return isJumping && velocity.y < 0;
     }
+
     void PlayJumpSound()
     {
         if (jumpSound != null && audioSource != null)

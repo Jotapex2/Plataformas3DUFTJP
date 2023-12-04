@@ -8,11 +8,8 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Niveldeprueba.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
-    path: Assets/Scenes/WinScene.unity
-    guid: ee975d66f7ff66145812dba4014c0b32
   - enabled: 1
-    path: "Assets/Scenes/Men\xFAInicio.unity"
+    path: Assets/Scenes/MenuInicio.unity
     guid: 0aca6dde60eac0c4caf4d573949524e1
   - enabled: 1
     path: Assets/Scenes/Nivel1.unity
@@ -23,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Nivel3.unity
     guid: e4fc60c608f378e49934600b36a4a4a3
+  - enabled: 1
+    path: Assets/Scenes/WinScene.unity
+    guid: ee975d66f7ff66145812dba4014c0b32
   m_configObjects: {}
