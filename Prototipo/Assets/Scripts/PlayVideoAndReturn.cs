@@ -1,14 +1,15 @@
 using UnityEngine;
 using UnityEngine.Video;
 using System.Collections;
+
 public class PlayVideoAndReturn : MonoBehaviour
 {
     public VideoPlayer videoPlayer;
     public GameObject canvas;
-    public Camera mainCamera; // Asegúrate de asignar la cámara principal desde el Inspector
 
     void Start()
     {
+        // Suscribirse al evento cuando el video alcanza su punto final
         if (videoPlayer != null)
         {
             videoPlayer.loopPointReached += EndReached;
@@ -17,42 +18,40 @@ public class PlayVideoAndReturn : MonoBehaviour
 
     public void PlayVideo()
     {
+        // Desactivar el canvas antes de reproducir el video
         if (canvas != null)
         {
             canvas.SetActive(false);
         }
-        /*
-        if (mainCamera != null)
-        {
-            mainCamera.enabled = false; // Desactiva la cámara principal
-        }
-        */
+
         if (videoPlayer != null)
         {
             videoPlayer.Play();
+            StartCoroutine(PlayVideoAndLoadSceneRoutine());
         }
-        StartCoroutine(PlayVideoAndLoadSceneRoutine());
     }
+
     IEnumerator PlayVideoAndLoadSceneRoutine()
     {
-        videoPlayer.Play();
+        // Espera hasta que el video termine de reproducirse
         while (videoPlayer.isPlaying)
         {
             yield return null;
         }
-        canvas.SetActive(true);
-    }
-    void EndReached(VideoPlayer vp)
-    {
+
+        // Reactiva el canvas una vez que el video ha terminado
         if (canvas != null)
         {
             canvas.SetActive(true);
         }
-        /*
-        if (mainCamera != null)
+    }
+
+    void EndReached(VideoPlayer vp)
+    {
+        // Reactiva el canvas cuando el video alcanza su punto final
+        if (canvas != null)
         {
-            mainCamera.enabled = true; // Reactiva la cámara principal
+            canvas.SetActive(true);
         }
-        */
     }
 }

@@ -46,7 +46,7 @@ public class Enemigo1_Script : MonoBehaviour
         PlayDeathSound();
         SpawnMoneda();
         SpawnParticleSystem();
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, 0.5f);
     }
 
     void PlayDeathSound()
