@@ -5,7 +5,7 @@ public class Movimiento : MonoBehaviour
     public CharacterController characterController;
 
     public float speed = 10.0f;
-    public float sprintSpeedMultiplier = 2.0f; // Multiplicador de velocidad al correr
+    public float sprintSpeedMultiplier = 2.0f;
     public float turnSmoothTime = 0.5f;
     private float turnSmoothVelocity;
 
@@ -19,11 +19,9 @@ public class Movimiento : MonoBehaviour
     public AudioClip jumpSound;
     private AudioSource audioSource;
 
-    // Variables para el doble salto
-    public int maxJumpCount = 2; // Número máximo de saltos permitidos
-    private int jumpCount; // Contador actual de saltos
+    public int maxJumpCount = 2;
+    private int jumpCount;
 
-    // Coyote Time variables
     public float coyoteTimeDuration = 0.2f;
     private float coyoteTimeCounter;
 
@@ -33,12 +31,13 @@ public class Movimiento : MonoBehaviour
     [Header("Animaciones")]
     public Animator animator;
 
-    private Transform currentPlatform; // Para almacenar la plataforma actual
+    private Transform currentPlatform;
+    private Vector3 platformPositionLastFrame;
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-        audioSource = GetComponent<AudioSource>(); // Obtener el componente AudioSource
+        audioSource = GetComponent<AudioSource>();
 
         if (audioSource == null)
         {
@@ -54,8 +53,8 @@ public class Movimiento : MonoBehaviour
         if (isGrounded && currentPlatform == null)
         {
             coyoteTimeCounter = coyoteTimeDuration;
-            jumpCount = 0; // Restablece el contador de saltos cuando el jugador toca el suelo
-            velocity.y = -2f; // Pequeña fuerza hacia abajo para asegurar que el controlador está en el suelo
+            jumpCount = 0;
+            velocity.y = -2f;
             isJumping = false;
             animator.SetBool("IsJumping", false);
         }
@@ -64,21 +63,12 @@ public class Movimiento : MonoBehaviour
             coyoteTimeCounter -= Time.deltaTime;
         }
 
-        float H_axis = Input.GetAxis("Horizontal");
-        float V_axis = Input.GetAxis("Vertical");
-        Vector3 direction = new Vector3(H_axis, 0, V_axis).normalized;
-
         if (Input.GetButtonDown("Jump") && (isGrounded || coyoteTimeCounter > 0 || jumpCount < maxJumpCount))
         {
-            if (currentPlatform != null)
-            {
-                transform.parent = null; // Desvincula al jugador de la plataforma
-                currentPlatform = null;
-            }
+            DetachFromPlatform();
 
             velocity.y = Mathf.Sqrt(jumpSpeed * -2f * gravity);
-            jumpCount++; // Incrementa el contador de saltos
-            coyoteTimeCounter = 0; // Restablece el coyote time
+            jumpCount++;
             isJumping = true;
             animator.SetBool("IsJumping", true);
             PlayJumpSound();
@@ -89,9 +79,25 @@ public class Movimiento : MonoBehaviour
             velocity.y += gravity * Time.deltaTime;
         }
 
-        // Verifica si el jugador está corriendo y actualiza la velocidad y la animación correspondientemente
+        HandleMovement();
+
+        if (currentPlatform != null)
+        {
+            Vector3 deltaMovement = currentPlatform.position - platformPositionLastFrame;
+            characterController.Move(deltaMovement);
+            platformPositionLastFrame = currentPlatform.position;
+        }
+    }
+
+    void HandleMovement()
+    {
+        float H_axis = Input.GetAxis("Horizontal");
+        float V_axis = Input.GetAxis("Vertical");
+        Vector3 direction = new Vector3(H_axis, 0, V_axis).normalized;
+
         bool isRunning = Input.GetKey(KeyCode.LeftShift);
         float currentSpeed = isRunning ? speed * sprintSpeedMultiplier : speed;
+
         animator.SetBool("Running", direction.magnitude >= 0.1f && isGrounded);
         animator.SetBool("IsDoubleRunning", isRunning);
 
@@ -112,11 +118,26 @@ public class Movimiento : MonoBehaviour
     {
         if (hit.gameObject.CompareTag("MovingPlatform") && isGrounded)
         {
-            if (currentPlatform != hit.transform)
-            {
-                transform.parent = hit.transform; // Hace al jugador hijo de la plataforma
-                currentPlatform = hit.transform;
-            }
+            AttachToPlatform(hit.transform);
+        }
+    }
+
+    void AttachToPlatform(Transform platform)
+    {
+        if (currentPlatform != platform)
+        {
+            transform.parent = platform;
+            currentPlatform = platform;
+            platformPositionLastFrame = platform.position;
+        }
+    }
+
+    void DetachFromPlatform()
+    {
+        if (currentPlatform != null)
+        {
+            transform.parent = null;
+            currentPlatform = null;
         }
     }
 
@@ -133,10 +154,10 @@ public class Movimiento : MonoBehaviour
         }
     }
 
-public void EstablecerPosicion(Vector3 nuevaPosicion)
-{
-    characterController.enabled = false; // Desactivar temporalmente para mover
-    transform.position = nuevaPosicion;
-    characterController.enabled = true; // Reactivar el controlador
-}
+    public void EstablecerPosicion(Vector3 nuevaPosicion)
+    {
+        characterController.enabled = false;
+        transform.position = nuevaPosicion;
+        characterController.enabled = true;
+    }
 }
