@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8620507681035888390}
   m_Layer: 0
   m_Name: Plataforma 2
-  m_TagString: Untagged
+  m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,9 +28,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4707981400483566495}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -405.18616, y: -165.90869, z: -121.66525}
-  m_LocalScale: {x: 16, y: 1, z: 16}
+  m_LocalScale: {x: 32, y: 1, z: 31}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -120,4 +120,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puntoA: {fileID: 0}
   puntoB: {fileID: 0}
-  velocidad: 30
+  velocidad: 10

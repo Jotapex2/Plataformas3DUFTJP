@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        CargarProgreso();
+        CargarProgresoSiNecesario();
         UpdateUIReferences();
         UpdateUI();
     }
@@ -126,9 +126,19 @@ public class GameManager : MonoBehaviour
         DesactivarMenuPausa();
     }
 
+    void CargarProgresoSiNecesario()
+    {
+        if (SceneManager.GetActiveScene().name == "NombreDeTuEscenaDeJuego") // Reemplaza con el nombre de tu escena de juego
+        {
+            CargarProgreso();
+        }
+    }
+
     public void CargarProgreso()
     {
-        if (jugador != null)
+        bool juegoGuardado = PlayerPrefs.HasKey("JugadorPosX");
+
+        if (juegoGuardado && jugador != null)
         {
             float x = PlayerPrefs.GetFloat("JugadorPosX", jugador.transform.position.x);
             float y = PlayerPrefs.GetFloat("JugadorPosY", jugador.transform.position.y);
@@ -139,10 +149,6 @@ public class GameManager : MonoBehaviour
             if (movimientoJugador != null)
             {
                 movimientoJugador.EstablecerPosicion(posicionCargada);
-            }
-            if (characterStatus != null)
-            {
-                characterStatus.HacerInvulnerable();
             }
         }
 
@@ -169,6 +175,26 @@ public class GameManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
+    public void CargarUltimoProgreso()
+    {
+        // Cargar el nombre de la última escena guardada
+        string ultimaEscena = PlayerPrefs.GetString("UltimaEscena", "Nivel1"); // Reemplaza "Nivel1" con el nombre real de tu escena por defecto
 
-    // Aquí puedes agregar otros métodos, como AgregarPuntos, etc.
+        if (!string.IsNullOrEmpty(ultimaEscena))
+        {
+            // Cargar los demás datos del progreso
+            Score = PlayerPrefs.GetInt("Score", 0);
+            Monedas = PlayerPrefs.GetInt("Monedas", 0);
+            Estrellas = PlayerPrefs.GetInt("Estrellas", 0);
+
+            // Cargar la escena
+            SceneManager.LoadScene(ultimaEscena);
+        }
+        else
+        {
+            // Si no hay datos guardados, carga la escena "Nivel 1"
+            SceneManager.LoadScene("Nivel1"); // Asegúrate de que el nombre de la escena coincida exactamente con el nombre en tu proyecto
+        }
+    }
+
 }
