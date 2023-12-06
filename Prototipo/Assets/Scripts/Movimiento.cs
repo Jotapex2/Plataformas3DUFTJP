@@ -132,4 +132,11 @@ public class Movimiento : MonoBehaviour
             audioSource.PlayOneShot(jumpSound);
         }
     }
+
+public void EstablecerPosicion(Vector3 nuevaPosicion)
+{
+    characterController.enabled = false; // Desactivar temporalmente para mover
+    transform.position = nuevaPosicion;
+    characterController.enabled = true; // Reactivar el controlador
+}
 }

@@ -9,6 +9,7 @@ public class Enemigo1_Script : MonoBehaviour
     public AudioClip hitSound;
     public GameObject particleSystemPrefab; // Prefab del sistema de partículas
     public GameObject monedaPrefab; // Prefab de la moneda
+    public TrailRenderer trailRenderer;
 
     private void Start()
     {
@@ -17,6 +18,9 @@ public class Enemigo1_Script : MonoBehaviour
 
         if (audioSource == null)
             audioSource = GetComponent<AudioSource>();
+        if (trailRenderer == null)
+            trailRenderer = GetComponent<TrailRenderer>();
+
     }
 
     private void OnTriggerEnter(Collider other)

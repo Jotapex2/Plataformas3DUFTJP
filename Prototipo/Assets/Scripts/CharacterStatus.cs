@@ -30,6 +30,7 @@ public class CharacterStatus : MonoBehaviour, IDamageable
         {
             characterRenderer.enabled = true;
         }
+        HacerInvulnerable(); // Hacer al personaje invulnerable al inicio del nivel
     }
 
     public void AddDamage(int damage)
@@ -66,6 +67,15 @@ public class CharacterStatus : MonoBehaviour, IDamageable
             health = Mathf.Min(health, maxHealth);
             // Notifica a los suscriptores que la salud ha cambiado
             onHealthChanged.Invoke();
+        }
+    }
+
+    // Método público para hacer al personaje invulnerable
+    public void HacerInvulnerable()
+    {
+        if (!isInvulnerable) // Comprobar si el personaje ya es invulnerable
+        {
+            StartCoroutine(BecomeInvulnerable());
         }
     }
 
