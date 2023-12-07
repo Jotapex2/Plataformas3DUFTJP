@@ -192,7 +192,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   deathSound: {fileID: 8300000, guid: f8e302296ecd96345a63cda82469303e, type: 3}
   hitSound: {fileID: 8300000, guid: 65ab061f7bfe57c49a1ae8fe3c4f30ee, type: 3}
-  particleSystemPrefab: {fileID: 630116687635312864, guid: 3ecefcab70769ab46a6fa0804a241420, type: 3}
+  particleSystemPrefab: {fileID: 7809799970701153902, guid: 72929a54056151e4a9429d771e8db177, type: 3}
   monedaPrefab: {fileID: 6230991424478341384, guid: 1bbd2b20b99fa7343a5f719c9438e751, type: 3}
   trailRenderer: {fileID: 3280603390704082499}
 --- !u!95 &6210772203164767720

@@ -183,3 +183,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundClip: {fileID: 8300000, guid: dd77e214eb341c84f96147c64e98e3aa, type: 3}
+  particleSystemPrefab: {fileID: 7239960557235001187, guid: e9c1d72b58b978440920c2d4bfc317b6, type: 3}
+  winSceneName: WinScene
