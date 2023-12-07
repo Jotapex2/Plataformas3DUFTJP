@@ -11,24 +11,30 @@ Por Juan Pablo González Urriola
 
 Waqaj: El aventurero climático, tiene que rescatar las tres estrellas de poder de cada uno de los planetas que están siendo destruídos por el cambio climático
 
-Nivel 1:
+**Nivel 1:
 Mouri, un planeta tranquilo que está siendo devorado por la lava.
 
 Mouri es una isla que está siendo destruido por la lava (por algo los agujeros en el terrain), es un nivel plataformero, con zonas para enemigos que faltan agregar, aunque, dado el diseño del nivel, no es necesario meter físicas muy complejas (aunque estoy revisando si se podrían insertar los joins como plataformas móviles). También ocupo unos lasers con raycast como obstáculo en la primera parte del nivel.
 
 También ocupo unos lasers con raycast como obstáculo en la primera parte del nivel y hay plataformas “trampa” pintadas de rojo, son las mismas plataformas normales, pero con el collider desactivado, así el player cae a la lava.
 
-Nivel 2:
+**Nivel 2:
 Destri es un nivel de agua, Este se compone de una serie de plataformas estáticas y las de cuerda (joint), donde el jugador tiene que ir avanzando, esquivando y/o matando a los enemigos, hasta llegar al centro de la isla del medio. Ahí el jugador caerá a una zona subterránea donde está la estrella de poder.
 
-Este nivel tiene Rigidbody (Enemigo 1 y tres), máquinas de estado del enemigo 2 (torreta) y del enemigo 3 (fusión enemigos 1 + 2) Además de tener físicas de Joints con las cuerdas, también hay un par de Raycast lasers por ahí.
+Este nivel tiene Rigidbody (Enemigo 1 y tres), máquinas de estado del enemigo 2 (torreta). Además de tener físicas de Joints con las cuerdas.
 
-Nivel 3:
+**Nivel 3:
 Quaj, otro planeta devastado tras una guerra nuclear.
-Aún no está diseñado, pero planeo hacer una planta nuclear destruida, con el suelo radiactivo y trampas parecidas a ello.
+El jugador pasa por una planta de energía nuclear devastada por las bombas atómicas, es un nivel un poco más cortos deque los anteriores. Pero tiene como principal agregado el enemigo 3, que es un enemigo con una máquina de estado de disparo y tiene Rigibody con navmesh. A diferencia de la torreta de los niveles uno y dos, este puede ser asesinado cuando el jugador salta encima de él
 
+# Cambios para la entrega final
 
-El juego contará con tres niveles
+Menú de pausa con sistema de guardado y cargado
+Final de juego y créditos
+Menú de inicio mejorado
+Enemigos 1 y 3 cuentan con trails 
+Agregadas partículas para las monedas y los enemigos
+Agregados efectos de sonido
 
 # Cambios para la entrega del 2 de diciembre
 
