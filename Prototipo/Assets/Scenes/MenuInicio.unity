@@ -2079,6 +2079,14 @@ PrefabInstance:
       value: VideoPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 3485055039867481083, guid: f75e8e573527b4441898e86825fd8853, type: 3}
+      propertyPath: m_VideoClip
+      value: 
+      objectReference: {fileID: 32900000, guid: 001d81f2c57d5ad4fb76ae811ed4bdf2, type: 3}
+    - target: {fileID: 3485055039867481083, guid: f75e8e573527b4441898e86825fd8853, type: 3}
+      propertyPath: m_DataSource
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3485055039867481083, guid: f75e8e573527b4441898e86825fd8853, type: 3}
       propertyPath: m_TargetCamera
       value: 
       objectReference: {fileID: 1261343932}
