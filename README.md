@@ -49,6 +49,8 @@ Este es un pequeño cubo que ocupa el Nav Mesh para moverse y acosar al jugador 
 
 Enemigo 2 (FSM)
 
+![2](https://github.com/Jotapex2/Plataformas3DUFTJP/assets/144637089/05c9dfd1-2f0b-406f-b21c-ae99f5f60309)
+
 Esta es una torreta triángulo que hasta el momento es inmortal, esta la compone tres estados: El estado entry que es cuando spamea en el nivel, el estado Vigilante y el estado ataque del estado entry al vigilante, la torreta pasa inmediatamente al spamear, 
 el estado vigilante es cuando la torreta está en modo de espera a que el jugador se le acerque a su zona de ataque. Cuando el jugador se acerca a la zona de ataque, la torreta le dispara balas para quitarle vida, cuando el jugador sale de dicha zona, la torreta vuelve a su estado de vigilante.
 
@@ -59,6 +61,7 @@ Enemigo 3 (FSM Y NavMesh)
 
 El enemigo 3 es una fusión del enemigo 1 y 2, hay uno escondido en el primer nivel como testing, pero lo ideal es que sea solo del tercer nivel. 
 
+![3](https://github.com/Jotapex2/Plataformas3DUFTJP/assets/144637089/defe1814-a80c-411c-8082-759931b139a7)
 
 # Cambios para la entrega del 25 de noviembre
 
