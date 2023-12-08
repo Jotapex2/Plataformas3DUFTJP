@@ -2090,6 +2090,10 @@ PrefabInstance:
       propertyPath: m_TargetCamera
       value: 
       objectReference: {fileID: 1261343932}
+    - target: {fileID: 3485055039867481083, guid: f75e8e573527b4441898e86825fd8853, type: 3}
+      propertyPath: m_WaitForFirstFrame
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5248547801224880053, guid: f75e8e573527b4441898e86825fd8853, type: 3}
       propertyPath: canvas
       value: 
