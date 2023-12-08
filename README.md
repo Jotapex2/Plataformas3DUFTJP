@@ -1,10 +1,11 @@
-# Plataformas3DUFTJP:
-
-## Waqaj, el guerrero climático
+# Waqaj, el guerrero climático
 
 
 **Prototipo 3D plataformas para el Diplomado en Diseño y desarrollo de videojuegos 3d en UNITY de la Universidad Finis Terrae**
 Por Juan Pablo González Urriola
+
+# Juego publicado en Itch.io:
+https://jpjuanpajp.itch.io/waqajelaventureroclimtico
 
 # Estructura de niveles y lore
 
