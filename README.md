@@ -43,6 +43,7 @@ Enemigos:
 
 Enemigo 1 (Nav Mesh)
 
+![1](https://github.com/Jotapex2/Plataformas3DUFTJP/assets/144637089/53943368-eff7-44b3-8cfb-6aef63086984)
 
 Este es un pequeño cubo que ocupa el Nav Mesh para moverse y acosar al jugador hasta matarlo, el jugador puede matarlo saltando encima de él, como un goobma del super mario. Al hacerlo, el enemigo suelta una moneda como recompensa.
 
