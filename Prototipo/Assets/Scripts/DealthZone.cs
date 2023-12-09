@@ -6,11 +6,20 @@ public class DealthZone : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        var damageble = other.GetComponent<IDamageable>();
+        ApplyDamage(other);
+    }
 
-        if (damageble != null)
+    private void OnCollisionEnter(Collision collision)
+    {
+        ApplyDamage(collision.collider);
+    }
+
+    private void ApplyDamage(Collider collider)
+    {
+        var damageable = collider.GetComponent<IDamageable>();
+        if (damageable != null)
         {
-            damageble.AddDamage(100);
+            damageable.AddDamage(100);
         }
     }
 }
