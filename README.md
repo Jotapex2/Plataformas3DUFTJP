@@ -42,6 +42,8 @@ Agregadas partículas para las monedas y los enemigos.
 
 Agregados efectos de sonido.
 
+Los otros requisitos de la entrega final, fueron incluidos en entregas anteriores.
+
 # Cambios para la entrega del 2 de diciembre
 
 Enemigos:
