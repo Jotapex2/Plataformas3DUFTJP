@@ -30,12 +30,17 @@ El jugador pasa por una planta de energía nuclear devastada por las bombas ató
 
 # Cambios para la entrega final
 
-Menú de pausa con sistema de guardado y cargado
-Final de juego y créditos
-Menú de inicio mejorado
-Enemigos 1 y 3 cuentan con trails 
-Agregadas partículas para las monedas y los enemigos
-Agregados efectos de sonido
+Menú de pausa con sistema de guardado y cargado.
+
+Final de juego y créditos.
+
+Menú de inicio mejorado.
+
+Enemigos 1 y 3 cuentan con trails. 
+
+Agregadas partículas para las monedas y los enemigos.
+
+Agregados efectos de sonido.
 
 # Cambios para la entrega del 2 de diciembre
 
