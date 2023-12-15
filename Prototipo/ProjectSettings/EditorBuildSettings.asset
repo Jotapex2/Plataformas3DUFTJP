@@ -21,8 +21,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Nivel3.unity
     guid: e4fc60c608f378e49934600b36a4a4a3
   - enabled: 1
+    path: Assets/Scenes/CargarNivel2.unity
+    guid: adfe5d7917cd0144c8e4e50e79fe5942
+  - enabled: 1
     path: Assets/Scenes/WinScene.unity
     guid: ee975d66f7ff66145812dba4014c0b32
+  - enabled: 1
+    path: Assets/Scenes/CargarNivel3.unity
+    guid: 5f13bb37e79f2f943bea7e2021a5cac2
   - enabled: 1
     path: Assets/Scenes/Creditos.unity
     guid: ef062a514f873674d9ae9c7ee1a31ced

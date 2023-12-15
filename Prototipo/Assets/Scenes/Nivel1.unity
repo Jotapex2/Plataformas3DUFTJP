@@ -4924,7 +4924,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3272148071906741860, guid: 0dabb2533d7f3064fbbdc3535aa9934d, type: 3}
       propertyPath: winSceneName
-      value: Nivel2
+      value: CargarNivel2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
