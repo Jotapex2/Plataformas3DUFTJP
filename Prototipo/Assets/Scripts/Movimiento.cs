@@ -95,7 +95,7 @@ public class Movimiento : MonoBehaviour
         float V_axis = Input.GetAxis("Vertical");
         Vector3 direction = new Vector3(H_axis, 0, V_axis).normalized;
 
-        bool isRunning = Input.GetKey(KeyCode.LeftShift);
+        bool isRunning = Input.GetButton("Fire1");
         float currentSpeed = isRunning ? speed * sprintSpeedMultiplier : speed;
 
         animator.SetBool("Running", direction.magnitude >= 0.1f && isGrounded);

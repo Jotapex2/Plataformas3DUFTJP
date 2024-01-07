@@ -2544,7 +2544,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3485055039867481083, guid: f75e8e573527b4441898e86825fd8853, type: 3}
       propertyPath: m_Url
-      value: https://Jotapex2.github.io/Vid1/Video1.1_1.mp4
+      value: https://jotapex2.github.io/VideoJP/Video1.1_1.mp4
       objectReference: {fileID: 0}
     - target: {fileID: 3485055039867481083, guid: f75e8e573527b4441898e86825fd8853, type: 3}
       propertyPath: m_VideoClip
@@ -2555,8 +2555,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3485055039867481083, guid: f75e8e573527b4441898e86825fd8853, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3485055039867481083, guid: f75e8e573527b4441898e86825fd8853, type: 3}
       propertyPath: m_SkipOnDrop
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3485055039867481083, guid: f75e8e573527b4441898e86825fd8853, type: 3}
+      propertyPath: m_AspectRatio
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3485055039867481083, guid: f75e8e573527b4441898e86825fd8853, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3485055039867481083, guid: f75e8e573527b4441898e86825fd8853, type: 3}
       propertyPath: m_TargetCamera
@@ -2570,6 +2582,14 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 1986866109}
+    - target: {fileID: 5248547801224880053, guid: f75e8e573527b4441898e86825fd8853, type: 3}
+      propertyPath: videoUrl
+      value: https://jotapex2.github.io/VideoJP/Video1.1_1.mp4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5248547801224880053, guid: f75e8e573527b4441898e86825fd8853, type: 3}
+      propertyPath: loadFromUrl
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7139997250392887983, guid: f75e8e573527b4441898e86825fd8853, type: 3}
       propertyPath: m_LocalPosition.x
       value: 815.6953

@@ -217,6 +217,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &119072064 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3037199063934389135, guid: e857b1f895ee6ef40ba4902dd097479d, type: 3}
+  m_PrefabInstance: {fileID: 1518914702913918517}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &119072065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119072064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1c230a9cd195144ab8b039a9df4c196, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoPlayer: {fileID: 119072066}
+  sceneToLoad: MenuInicio
+  canvas: {fileID: 648202657}
+  loadFromUrl: 0
+  videoUrl: https://jotapex2.github.io/VideoJP/VideoCierre_1.mp4
+--- !u!328 &119072066 stripped
+VideoPlayer:
+  m_CorrespondingSourceObject: {fileID: 842399080412017182, guid: e857b1f895ee6ef40ba4902dd097479d, type: 3}
+  m_PrefabInstance: {fileID: 1518914702913918517}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &648202657
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,9 +514,25 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 842399080412017182, guid: e857b1f895ee6ef40ba4902dd097479d, type: 3}
+      propertyPath: m_Url
+      value: https://jotapex2.github.io/VideoJP/VideoCierre_1.mp4
+      objectReference: {fileID: 0}
+    - target: {fileID: 842399080412017182, guid: e857b1f895ee6ef40ba4902dd097479d, type: 3}
       propertyPath: m_VideoClip
       value: 
-      objectReference: {fileID: 32900000, guid: 15edbbdb0b2d3b84098cfea4f2f6de89, type: 3}
+      objectReference: {fileID: 32900000, guid: 245776a95bdff3647aa45b7cc8ec1c10, type: 3}
+    - target: {fileID: 842399080412017182, guid: e857b1f895ee6ef40ba4902dd097479d, type: 3}
+      propertyPath: m_DataSource
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 842399080412017182, guid: e857b1f895ee6ef40ba4902dd097479d, type: 3}
+      propertyPath: m_SkipOnDrop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 842399080412017182, guid: e857b1f895ee6ef40ba4902dd097479d, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 842399080412017182, guid: e857b1f895ee6ef40ba4902dd097479d, type: 3}
       propertyPath: m_TargetCamera
       value: 
@@ -550,10 +593,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1450880748458533150, guid: e857b1f895ee6ef40ba4902dd097479d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3037199063934389135, guid: e857b1f895ee6ef40ba4902dd097479d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 119072065}
   m_SourcePrefab: {fileID: 100100000, guid: e857b1f895ee6ef40ba4902dd097479d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
